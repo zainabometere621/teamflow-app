@@ -8,7 +8,7 @@ export default function AuthForm() {
   const [activeTab, setActiveTab] = useState("login");
 
   return (
-    <section className="bg-[#0f172a] h-screen w-full flex flex-col space-x-2 pl-10 pt-36 text-xl">
+    <section className="bg-[#0f172a] h-screen w-full flex flex-col space-x-2 px-10 pt-36 text-xl">
       <div className="flex space-x-6 mb-8">
         <button
           onClick={() => setActiveTab("login")}
