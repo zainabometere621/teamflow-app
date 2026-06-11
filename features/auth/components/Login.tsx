@@ -39,7 +39,7 @@ export default function Login() {
       </div>
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
-          <Checkbox className="h-4 w-4 bg-[#ffffff] border border-[#94a3b8]" />
+         <Checkbox className="h-4 w-4 border border-[#94a3b8] bg-[#ffffff] data-[state=checked]:bg-[#3b82f6] data-[state=checked]:border-[#3b82f6]" />
           <label className="text-base text-[#94a3b8]">Remember me</label>
         </div>
         <div>
