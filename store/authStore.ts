@@ -7,7 +7,7 @@ interface AuthState {
   isLoggedIn: boolean;
 
   // action
-  login: (email: string, password: string,  role: string) => boolean;
+  login: (email: string, password: string, role: string) => boolean;
   register: (
     name: string,
     password: string,
@@ -39,11 +39,11 @@ export const useAuthStore = create<AuthState>((set) => ({
         currentUser: { name: user.name, email: user.email, role: user.role },
         isLoggedIn: true,
       });
+      setItem("session", user);
       return true;
     } else {
-  return false;
+      return false;
     }
-    
   },
   register: (name: string, password: string, email: string, role: string) => {
     const users = getItem("users") || [];
@@ -54,6 +54,10 @@ export const useAuthStore = create<AuthState>((set) => ({
       currentUser: { name: name, email: email, role: role },
       isLoggedIn: true,
     });
+    setItem("session", newUser);
   },
-  logout: () => set({ currentUser: null, isLoggedIn: false }),
+  logout: () => {
+    removeItem("session");
+    set({ currentUser: null, isLoggedIn: false });
+  },
 }));
