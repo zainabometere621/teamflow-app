@@ -1,3 +1,5 @@
+import { useAuthStore } from "@/store/authStore";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,15 +11,32 @@ import {
 } from "@/components/ui/select";
 
 export default function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const { register } = useAuthStore();
+  const [error, setError] = useState("");
+
   return (
     <section className="space-y-6">
       <div className="flex flex-col gap-2">
         <label className="text-[#ffffff] text-base">Full Name</label>
-        <Input placeholder="John Doe" className="placeholder-[#94a3b8]" />
+        <Input
+          placeholder="John Doe"
+          className="placeholder-[#94a3b8]"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-[#ffffff] text-base">Email</label>
-        <Input placeholder="you@gmail.com" className="placeholder-[#94a3b8]" />
+        <Input
+          placeholder="you@gmail.com"
+          className="placeholder-[#94a3b8]"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-[#ffffff] text-base">Password</label>
@@ -25,11 +44,13 @@ export default function Register() {
           type="password"
           placeholder="••••••••"
           className="placeholder-[#94a3b8]"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className="flex flex-col gap-2">
         <label className="text-[#ffffff] text-base">Role</label>
-        <Select>
+        <Select onValueChange={(value) => setRole(value)}>
           <SelectTrigger className="bg-[#1e293b] border-[#2d3f55] text-[#ffffff]">
             <SelectValue placeholder="Member" />
           </SelectTrigger>
@@ -40,7 +61,18 @@ export default function Register() {
           </SelectContent>
         </Select>
       </div>
-      <Button className="w-full bg-[#3b82f6] text-[#ffffff]">
+      {error && <p className="text-[#ef4444] text-sm">{error}</p>}
+      <Button
+        className="w-full bg-[#3b82f6] text-[#ffffff]"
+        onClick={() => {
+          if (role === "") {
+            setError("Please select a role");
+          } else {
+            setError("");
+            register(name, password, email, role);
+          }
+        }}
+      >
         Create account
       </Button>
     </section>

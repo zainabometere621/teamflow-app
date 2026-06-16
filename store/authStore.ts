@@ -7,7 +7,7 @@ interface AuthState {
   isLoggedIn: boolean;
 
   // action
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string,  role: string) => boolean;
   register: (
     name: string,
     password: string,
@@ -23,7 +23,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   currentUser: null,
   isLoggedIn: false,
 
-  login: (email: string, password: string) => {
+  login: (email: string, password: string, role: string) => {
     const users: {
       name: string;
       email: string;
@@ -32,15 +32,18 @@ export const useAuthStore = create<AuthState>((set) => ({
     }[] = getItem("users") || [];
     const user = users.find(
       (u: { name: string; email: string; password: string; role: string }) =>
-        u.email === email && u.password === password,
+        u.email === email && u.password === password && u.role === role,
     );
     if (user) {
       set({
         currentUser: { name: user.name, email: user.email, role: user.role },
         isLoggedIn: true,
       });
+      return true;
     } else {
+  return false;
     }
+    
   },
   register: (name: string, password: string, email: string, role: string) => {
     const users = getItem("users") || [];
