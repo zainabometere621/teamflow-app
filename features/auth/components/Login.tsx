@@ -18,7 +18,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const { login } = useAuthStore();
+  const { login, currentUser, isLoggedIn } = useAuthStore();
   const [error, setError] = useState("");
 
   return (
@@ -64,6 +64,10 @@ export default function Login() {
           <label className="text-base text-[#3b82f6]">Forgot password?</label>
         </div>
       </div>
+      <p className="text-white">
+        {JSON.stringify(currentUser)} -{" "}
+        {isLoggedIn ? "Logged in" : "Not logged in"}
+      </p>
       {error && <p className="text-[#ef4444] text-sm">{error}</p>}
       <Button
         className="w-full bg-[#3b82f6] text-[#ffffff]"

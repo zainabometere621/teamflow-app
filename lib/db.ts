@@ -5,9 +5,10 @@ export function setItem(key:string, value:any) {
 
 // read item 
 export function getItem(key: string) {
-  const item = localStorage.getItem(key)
-  if (item === null) return null
-  return JSON.parse(item)
+  if (typeof window === "undefined") return null;
+  const item = localStorage.getItem(key);
+  if (item === null) return null;
+  return JSON.parse(item);
 }
 
 // delete item

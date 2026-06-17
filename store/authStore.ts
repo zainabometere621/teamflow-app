@@ -14,6 +14,7 @@ interface AuthState {
     email: string,
     role: string,
   ) => void;
+  restoreSession: () => void;
   logout: () => void;
 }
 
@@ -55,6 +56,12 @@ export const useAuthStore = create<AuthState>((set) => ({
       isLoggedIn: true,
     });
     setItem("session", newUser);
+  },
+  restoreSession: () => {
+    const session = getItem("session");
+    if (session) {
+      set({ currentUser: session, isLoggedIn: true });
+    }
   },
   logout: () => {
     removeItem("session");
