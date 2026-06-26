@@ -1,5 +1,48 @@
-export const metricCard = [
-    {
-        
-    }
-]
+import { FolderKanban, CheckCircle, Clock, Users } from "lucide-react";
+
+export const metricCards = [
+  {
+    icon: FolderKanban,
+    iconBg: "bg-[#1e3a5f]",
+    iconColor: "text-[#60a5fa]",
+    trend: "+2",
+    trendUp: true,
+    value: 12,
+    label: "Active Projects",
+    barColor: "bg-[#1e3a5f]",
+    bars: [10, 16, 10, 20, 16, 24, 18, 28],
+  },
+  {
+    icon: CheckCircle,
+    iconBg: "bg-[#175147]",
+    iconColor: "text-[#4ade80]",
+    trend: "+18",
+    trendUp: true,
+    value: 142,
+    label: "Tasks Completed",
+    barColor: "bg-[#175147]",
+    bars:  [10, 16, 10, 20, 16, 24, 18, 28],
+  },
+  {
+    icon: Clock,
+    iconBg: "bg-[#4D4531]",
+    iconColor: "text-[#fbbf24]",
+    trend: "-5",
+    trendUp: false,
+    value: 24,
+    label: "Pending Tasks",
+    barColor: "bg-[#4D4531]",
+    bars:  [10, 16, 10, 20, 16, 24, 18, 28],
+  },
+  {
+    icon: Users,
+    iconBg: "bg-[#4B2D4E]",
+    iconColor: "text-[#EC4899]",
+    trend: "+1",
+    trendUp: true,
+    value: 8,
+    label: "Team Members",
+    barColor: "bg-[#4B2D4E]",
+    bars: [10, 16, 10, 20, 16, 24, 18, 28],
+  },
+];

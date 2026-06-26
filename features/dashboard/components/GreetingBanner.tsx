@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function GreetingBanner() {
 return(
-     <section className="px-6">
+     <section className="px-4">
         <div className="bg-[#1e293b] rounded-xl p-6 shadow-lg flex items-center justify-between">
           <div>
             <h2 className="text-[#ffffff] text-2xl font-bold flex items-center gap-2">

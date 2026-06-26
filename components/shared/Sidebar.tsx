@@ -12,7 +12,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <section className="h-screen w-56  bg-[#1e293b] border-r border-[#2d3f55] flex flex-col p-6 justify-between">
+    <section className="h-screen w-48  bg-[#1e293b] border-r border-[#2d3f55] flex flex-col p-4 justify-between">
       <div className="flex flex-col gap-4 ">
         {/* top */}
         <div className="flex items-center gap-2 border-b border-[#2d3f55] -mx-6 px-6 pb-4">
