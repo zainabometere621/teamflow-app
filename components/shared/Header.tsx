@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 export default function Header({ title }: { title: string }) {
   return (
-    <section className="flex  h-16.25 items-center justify-between border-b border-[#2d3f55] p-4">
+    <section className="flex h-16.25 p-6 sticky top-0 z-10 bg-[#0f172a] items-center justify-between border-b border-[#2d3f55] p-4">
       {/* leftiteems */}
       <div>
         <h1 className="text-[#ffffff] font-medium text-3xl">{title}</h1>

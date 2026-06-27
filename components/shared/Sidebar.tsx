@@ -65,7 +65,7 @@ export default function Sidebar() {
         </div>
       </div>
       {/* bottom */}
-      <div className="flex flex-col gap-4 border-t border-[#2d3f55] -mx-6 px-6 pt-4">
+      <div className="flex flex-col gap-4 border-t border-[#2d3f55] -mx-4 px-6 pt-4">
         <div className="flex items-center bg-[#2d3f55] gap-2 px-4 py-2 rounded-lg ">
           <div className=" flex items-center justify-center h-8 w-8 rounded-full font-bold text-xl bg-gradient-to-br from-[#2563eb] to-[#60a5fa] shadow-md text-[#ffffff]">
             A

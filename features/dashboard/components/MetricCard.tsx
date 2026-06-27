@@ -24,13 +24,15 @@ export default function MetricCard({
   bars,
 }: MetricCardProps) {
   return (
-    <div className="bg-[#1e293b] border border-[#2d3f55]  rounded-xl p-5 flex flex-col gap-2 flex-1">
+    <div className="bg-[#1e293b] shadow-lg border border-[#2d3f55]  rounded-xl p-5 flex flex-col gap-2 flex-1">
       {/* top row — icon + trend */}
       <div className="flex items-center justify-between">
         <div className={`${iconBg} p-2 rounded-lg`}>
           <Icon className={`h-5 w-5 ${iconColor}`} />
         </div>
-        <span className={`text-xs font-medium ${trendUp ? "text-green-400" : "text-red-400"}`}>
+        <span
+          className={`text-xs font-medium ${trendUp ? "text-green-400" : "text-red-400"}`}
+        >
           {trendUp ? "↗" : "↘"} {trend}
         </span>
       </div>

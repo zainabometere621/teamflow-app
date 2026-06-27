@@ -7,7 +7,10 @@ export default function Layout({
 }) {
   return (
     <main className="flex">
-      <Sidebar />
+      <div className="sticky top-0 h-screen">
+          <Sidebar />
+      </div>
+    
 
       <div className="flex-1">{children}</div>
     </main>
