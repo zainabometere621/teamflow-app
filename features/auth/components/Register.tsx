@@ -1,4 +1,7 @@
+"use client";
+
 import { useAuthStore } from "@/store/authStore";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -17,6 +20,7 @@ export default function Register() {
   const [role, setRole] = useState("");
   const { register } = useAuthStore();
   const [error, setError] = useState("");
+  const router = useRouter();
 
   return (
     <section className="space-y-6">
@@ -65,11 +69,12 @@ export default function Register() {
       <Button
         className="w-full bg-[#3b82f6] text-[#ffffff]"
         onClick={() => {
-          if (role === "") {
-            setError("Please select a role");
+          if (name === "" || email === "" || password === "" || role === "") {
+            setError("Please fill in all fields");
           } else {
             setError("");
             register(name, password, email, role);
+            router.push("/dashboard");
           }
         }}
       >

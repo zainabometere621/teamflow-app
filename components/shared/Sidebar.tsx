@@ -1,4 +1,7 @@
+"use client";
+
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 import {
   House,
   Kanban,
@@ -9,8 +12,12 @@ import {
   Plus,
   LogOut,
 } from "lucide-react";
+import { useAuthStore } from "@/store/authStore";
 
 export default function Sidebar() {
+  const { currentUser, logout } = useAuthStore();
+  const router = useRouter();
+
   return (
     <section className="h-screen w-48  bg-[#1e293b] border-r border-[#2d3f55] flex flex-col p-4 justify-between">
       <div className="flex flex-col gap-4 ">
@@ -27,7 +34,7 @@ export default function Sidebar() {
             <House className="h-4 w-4" />
             <p>Dashboard</p>
           </div>
-          <div  className="flex items-center justify-between -ml-6 pl-6 pr-2 py-2 rounded-lg hover:bg-[#2d3f55] cursor-pointer transition-colors">
+          <div className="flex items-center justify-between -ml-6 pl-6 pr-2 py-2 rounded-lg hover:bg-[#2d3f55] cursor-pointer transition-colors">
             <div className="flex gap-2 items-center">
               <Kanban className="h-4 w-4" />
               <p>Projects</p>
@@ -36,7 +43,7 @@ export default function Sidebar() {
               12
             </span>
           </div>
-          <div  className="flex items-center justify-between -ml-6 pl-6 pr-2 py-2 rounded-lg hover:bg-[#2d3f55] cursor-pointer transition-colors">
+          <div className="flex items-center justify-between -ml-6 pl-6 pr-2 py-2 rounded-lg hover:bg-[#2d3f55] cursor-pointer transition-colors">
             <div className="flex gap-2 items-center">
               <SquareCheckBig className="h-4 w-4" />
               <p>Tasks</p>
@@ -49,7 +56,7 @@ export default function Sidebar() {
             <Users className="h-4 w-4" />
             <p>Team</p>
           </div>
-          <div  className="flex items-center py-2 justify-between -ml-6 pl-6 pr-2 py-2  rounded-lg hover:bg-[#2d3f55] cursor-pointer transition-colors">
+          <div className="flex items-center py-2 justify-between -ml-6 pl-6 pr-2 py-2  rounded-lg hover:bg-[#2d3f55] cursor-pointer transition-colors">
             <div className="flex gap-2 items-center">
               <Bell className="h-4 w-4" />
               <p>Notifications</p>
@@ -68,18 +75,24 @@ export default function Sidebar() {
       <div className="flex flex-col gap-4 border-t border-[#2d3f55] -mx-4 px-6 pt-4">
         <div className="flex items-center bg-[#2d3f55] gap-2 px-4 py-2 rounded-lg ">
           <div className=" flex items-center justify-center h-8 w-8 rounded-full font-bold text-xl bg-gradient-to-br from-[#2563eb] to-[#60a5fa] shadow-md text-[#ffffff]">
-            A
+            {currentUser?.name?.[0]}
           </div>
           <div className=" flex flex-col">
-            <h1 className="text-[#ffffff] text-sm">Alex Kim</h1>
-            <p className="text-[#94a3b8] text-xs">Member</p>
+            <h1 className="text-[#ffffff] text-sm">{currentUser?.name}</h1>
+            <p className="text-[#94a3b8] text-xs">{currentUser?.role}</p>
           </div>
         </div>
         <Button className="w-full flex bg-[#3b82f6] text-[#ffffff]">
           <Plus className="h-4 w-4" />
           <p>New Task</p>
         </Button>
-        <Button className="w-full border border-[#94a3b8] text-[#94a3b8] ">
+        <Button
+          className="w-full border border-[#94a3b8] text-[#94a3b8] "
+          onClick={() => {
+            logout();
+            router.push("/");
+          }}
+        >
           <LogOut className="h-4 w-4" />
           <p>Logout</p>
         </Button>

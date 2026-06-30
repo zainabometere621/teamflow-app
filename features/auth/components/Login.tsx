@@ -2,7 +2,7 @@
 
 import { useAuthStore } from "@/store/authStore";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -20,6 +20,7 @@ export default function Login() {
   const [role, setRole] = useState("");
   const { login, currentUser, isLoggedIn } = useAuthStore();
   const [error, setError] = useState("");
+  const router = useRouter();
 
   return (
     <section className="space-y-6">
@@ -80,6 +81,7 @@ export default function Login() {
               setError("Incorrect email, password or role");
             } else {
               setError("");
+              router.push("/dashboard");
             }
           }
         }}
