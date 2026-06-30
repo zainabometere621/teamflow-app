@@ -82,10 +82,12 @@ export default function Sidebar() {
             <p className="text-[#94a3b8] text-xs">{currentUser?.role}</p>
           </div>
         </div>
-        <Button className="w-full flex bg-[#3b82f6] text-[#ffffff]">
-          <Plus className="h-4 w-4" />
-          <p>New Task</p>
-        </Button>
+        {currentUser?.role === "admin" && (
+          <Button className="px-4 flex bg-[#3b82f6] text-[#ffffff]">
+            <Plus className="h-4 w-4" />
+            New Task
+          </Button>
+        )}
         <Button
           className="w-full border border-[#94a3b8] text-[#94a3b8] "
           onClick={() => {
